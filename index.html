@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>TaLNet</title>
+</head>
+
+<body>
+<h2>Demos from &quot;TaLNet: Voice Reconstruction from Tongue and Lip Articulation with Transfer Learning from Text-to-Speech Synthesis&quot; </h2>
+<p>Paper: TO DO</p>
+<p>Authors: Jing-Xuan Zhang, Korin Richmond, Zhen-Hua-Ling, Li-Rong Dai</p>
+<p>Abstract: This paper presents TaLNet, a model for voice reconstruction with ultrasound tongue and optical lip videos as inputs. TaLNet is based on an encoder-decoder architecture. Separate encoders are dedicated to processing the tongue and lip data streams respectively. The decoder predicts acoustic features conditioned on encoder outputs and speaker codes. To mitigate for having only relatively small amounts of dual articulatory-acoustic data available for training, and since our task here shares with text-to-speech (TTS) the common goal of speech generation, we propose a novel transfer learning strategy to exploit the much larger amounts of acoustic-only data available to train TTS models. For this, a Tacotron 2 TTS model is first trained, and then the parameters of its decoder are transferred to the TaLNet decoder. We have evaluated our approach on an unconstrained multi-speaker voice recovery task. Our results show the effectiveness of both the proposed model and the transfer learning strategy. Speech reconstructed using our proposed method significantly outperformed all baselines (DNN, BLSTM and without transfer learning) in terms of both naturalness and intelligibility. When using an ASR model decoding the recovery speech,<br />
+  the WER of our proposed method is relatively reduced over 30% compared to baselines.</p><hr />
+<h3>1. Comparison with baselines</h3>
+<table width="618" border="1">
+  <tr>
+    <td>DNN</td>
+    <td>BLSTM</td>
+    <td>TaLNet w/o transfer</td>
+    <td>TaLNet</td>
+    <td>Natural</td>
+  </tr>
+  <tr>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/1_baseline_DNN/08me_016_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/2_baseline_BLSTM/08me_016_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/3_baseline_TaLNet_without_transfer_learning/08me_016_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/4_proposed_TaLNet/08me_016_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/0_natural_target/08me_016_xaud.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/1_baseline_DNN/20fs_025_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/2_baseline_BLSTM/20fs_025_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/3_baseline_TaLNet_without_transfer_learning/20fs_025_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/4_proposed_TaLNet/20fs_025_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/0_natural_target/20fs_025_xaud.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/1_baseline_DNN/22me_015_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/2_baseline_BLSTM/22me_015_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/3_baseline_TaLNet_without_transfer_learning/22me_015_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/4_proposed_TaLNet/22me_015_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/0_natural_target/22me_015_xaud.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/1_baseline_DNN/25fs_008_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/2_baseline_BLSTM/25fs_008_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/3_baseline_TaLNet_without_transfer_learning/25fs_008_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/4_proposed_TaLNet/25fs_008_xaud.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="1_comparison_with_baseline/0_natural_target/25fs_008_xaud.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+</table>
+
+
+<h3>2. Varying the number of the speakers</h3>
+<table width="200" border="1">
+  <tr>
+    <td>Number of speakers used</td>
+    <td>TaLNet w/o transfer</td>
+    <td>TaLNet</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/1/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet/1/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/3/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet/3/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/9/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet/9/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/25/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet/25/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+  <tr>
+    <td>75</td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/75/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+    <td><audio controls>
+    	<source src="2_varying_the_number_of_speakers/TaLNet/75/70ms-004_xaud-gen-feats_gen.wav" type="audio/wav">
+   	</audio></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="200" border="1">
+  <tr>
+    <td>Number of speakers used</td>
+    <td>TaLNet w/o transfer</td>
+    <td>TaLNet</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/1/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet/1/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/3/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet/3/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/9/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet/9/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/25/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet/25/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>75</td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet_without_transfer_learning/75/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="2_varying_the_number_of_speakers/TaLNet/75/70ms-007_xaud-gen-feats_gen.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+</table>
+<h3>3. Ablation Studies</h3>
+<table width="412" height="211" border="1">
+  <tr>
+    <td width="108">Methods</td>
+    <td width="79">Sample1</td>
+    <td width="77">Sample2</td>
+    <td width="120">Sample3</td>
+  </tr>
+  <tr>
+    <td>TaLNet</td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/1_TaLNet/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/1_TaLNet/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/1_TaLNet/12me_018_xaud.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>w/o tongue</td>
+       <td><audio controls="controls">
+      <source src="3_ablation_studies/2_wo_tongue/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/2_wo_tongue/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/2_wo_tongue/12me_018_xaud.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>w/o lip</td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/3_wo_lip/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/3_wo_lip/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/3_wo_lip/12me_018_xaud.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>w/o stat</td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/4_wo_stat/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/4_wo_stat/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/4_wo_stat/12me_018_xaud.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>w/o scheduled sampling</td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/5_wo_ss/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/5_wo_ss/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/5_wo_ss/12me_018_xaud.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>w/o finetune</td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/6_wo_finetune/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/6_wo_finetune/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/6_wo_finetune/12me_018_xaud.wav" type="audio/wav" />
+    </audio></td>
+  </tr>
+  <tr>
+    <td>Natural</td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/0_natural_target/03mn_006_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/0_natural_target/08me_023_xaud.wav" type="audio/wav" />
+    </audio></td>
+    <td><audio controls="controls">
+      <source src="3_ablation_studies/0_natural_target/12me_018_xaud.wav" type="audio/wav" />
+  </tr>
+</table>
+<h3>4. Silent utterances</h3>
+<table width="428" border="1">
+  <tr>
+    <td width="207">Audible</td>
+    <td width="205">Silent</td>
+  </tr>
+  <tr>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/i2m2hhtX_vY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/uSpLFCgl_jg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+  </tr>
+  <tr>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/p5fcMJEPemw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/147iED-uy6w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+  </tr>
+  <tr>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/79Ri-3pV9zE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/nI9g8HvMg_k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+  </tr>
+  <tr>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/Xdscv1npuMU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+    <td><iframe width="560" height="315" src="https://www.youtube.com/embed/r6hr4SYW-x8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+</body>
+</html>
+
